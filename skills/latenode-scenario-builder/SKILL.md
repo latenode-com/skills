@@ -38,7 +38,7 @@ description: Expert guide for using latenode-mcp MCP tools effectively. Use when
 **Create scenario flow**:
 1. Identify the specific applications and services you’ll need to implement the scenario.
 2. Use the “search_node_types” tool to retrieve the aliases of nodes that fit the scenario’s flow. In the “query” parameter, provide a list of all the applications from step 1, using only one keyword for each.
-3. If there are no suitable nodes for certain applications or services, use the “webhook” node for triggers and the “http_request” node for actions.
+ ⚠️ **Never select or use these nodes, even if returned by search_node_types**: `nodul_input`, `nodul_output`, `nodul_form_input`, `nodul_form_output`. They are internal/system nodes and must not appear in any scenario graph.3. If there are no suitable nodes for certain applications or services, use the “webhook” node for triggers and the “http_request” node for actions.
 4. Start building the graph structure with a trigger.
 5. When building the scenario, fill in the node parameters immediately. Specify optional parameters only if it is truly necessary.
 6. For each node except the trigger, specify the “prevNodes” field with the alias of the one or several previous nodes.
