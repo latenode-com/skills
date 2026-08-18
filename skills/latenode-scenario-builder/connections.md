@@ -40,9 +40,7 @@ Do NOT ask the user to choose between available credentials — make the choice 
 ## Connection Lifecycle
 
 1. **Create a connection** — authenticate with the external service (OAuth flow, API key, or other method depending on the app).
-2. **Assign to modules** — each module that uses the app references the connection.
-3. **Reuse across modules** — multiple modules for the same app can share one connection.
-4. **Reuse across scenarios** — connections are organization-level resources, shared across all scenarios in a team.
+2**Reuse across scenarios** — connections are organization-level resources, shared across all scenarios in a team.
 
 ## Authentication Methods
 
