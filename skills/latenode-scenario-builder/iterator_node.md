@@ -16,7 +16,7 @@ The Iterator card has two different outputs:
 
 #### How to save through MCP
 
-Live-verified 2026-09-03 (write API fix). Both connectors can be saved through MCP.
+Both connectors can be saved through MCP.
 
 | What we do | Result |
 |---|---|
@@ -58,8 +58,6 @@ Cycle nodes are **not nested objects** inside `Iterator.parameters.nodes`.
 3. `run_scenario_once`: `executedNodesCount` for the cycle node equals the item count; each post-loop node runs once.
 
 `get_scenario` may **display** `{{$2.value}}` as `{{$iterator_0.value}}`. Do not write that back. Always send `{{$N.value}}`. Never send a cycle-root `prevNodes` pointing at the Iterator — that is the right connector, not the cycle.
-
-QA 2026-09-03: same-save `6a9929e114868f6504aecc73`; sequential `6a9929f281ea6a85fb2d21a6`. Cycle nodes ×3, post-loop ×1.
 
 #### Runtime data paths
 

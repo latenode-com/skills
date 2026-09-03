@@ -34,7 +34,7 @@ The Agent card has two different outputs:
 
 #### How to save through MCP
 
-Live-verified 2026-09-03 (write API fix). Both connectors can be saved through MCP.
+Both connectors can be saved through MCP.
 
 | What we do | Result |
 |---|---|
@@ -76,8 +76,6 @@ Tools may be nested in the first `create_scenario`, together with a right-side s
 Set `force_think_tool` to `false` unless a Think tool is also connected on the bottom as a normal Agent Tool.
 
 Do not claim success unless the tool is still nested **and** a run proves `fromAIAgent` works.
-
-QA 2026-09-03: same-save `6a9929e114868f6504aecc73`; sequential `6a9929f281ea6a85fb2d21a6`. Two HTTP tools + two `set_variables` on the right. Historical flatten (2026-09-01): `6a96926abe9f4245fc4f0317`.
 
 #### `fromAIAgent()` syntax
 
@@ -125,10 +123,7 @@ On a nested HTTP tool, write:
 "__$$internal__tool_description": "GET a public URL and return status and body for the agent."
 ```
 
-Live-verified 2026-09-03:
-
-- Same `create_scenario` as the nested tool: `6a993320f4aedd6ed5b8d5a1` — field kept in `get_scenario`.
-- After the tool was already connected, `update_scenario`: `6a9932e014868f6504aeccde` — field kept.
+The field is kept on `create_scenario` (nested with the tool) and on a later `update_scenario` of an already connected tool.
 
 `get_dynamic_node_parameters` for `http_request` does **not** return this key (and may error). Do not wait for that tool. Put `__$$internal__tool_description` on the nested tool's `parameters` yourself.
 
@@ -136,13 +131,13 @@ Standalone `http_request` (not under `parameters.tools`) still rejects this key.
 
 Think and Plan already list `__$$internal__tool_description` in their `search_node_types` schema. Same key, same meaning.
 
-#### Verified example
+#### Example
 
 Stage 1:
 
 ```json
 {
-  "name": "AI Agent QA",
+  "name": "AI Agent example",
   "nodes": [
     {
       "name": "Start",
@@ -150,12 +145,12 @@ Stage 1:
       "parameters": {}
     },
     {
-      "name": "AI Agent QA",
+      "name": "Research Agent",
       "typeAlias": "ai_agent",
       "parameters": {
         "model": "openai/gpt-4.1",
-        "user_prompt": "QA",
-        "system_message": "QA",
+        "user_prompt": "Call HTTP Tool once.",
+        "system_message": "Use the available tool when needed.",
         "context_window_length": 25,
         "max_iterations": 3
       },
@@ -190,7 +185,7 @@ Stage 2 sends the same two-node graph through `update_scenario`, with:
 }
 ```
 
-Verified execution:
+Expected execution:
 
 - AI Agent: 1 execution
 - HTTP Tool: 1 execution

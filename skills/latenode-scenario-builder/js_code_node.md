@@ -137,7 +137,7 @@ The file accessor **must be hardcoded in the source**, in this format (middle se
 const webpContent = data["{{$3.result.fileInfo.content}}"];
 ```
 
-Live-verified equivalent with numbered access and backticks:
+Equivalent numbered access with backticks:
 
 ```javascript
 const webpContent = data["{{3.`result`.`fileInfo`.`content`}}"];
@@ -152,7 +152,7 @@ if (!webpContent) {
 const imageBuffer = Buffer.from(webpContent, "latin1");
 ```
 
-When a **JavaScript** node returns `file: file("name.csv")`, the next JS node reads it as **`data["{{$2.file.content}}"]`** (node 2 = the JS that returned the file). There is no `result` wrapper. The official CSV docs example `{{2.result.file.content}}` is for nodes whose output is nested under `result` — a JS `file()` return is top-level `file.content`. Live test: scenario `Final test - JS file chain`.
+When a **JavaScript** node returns `file: file("name.csv")`, the next JS node reads it as **`data["{{$2.file.content}}"]`** (node 2 = the JS that returned the file). There is no `result` wrapper. The official CSV docs example `{{2.result.file.content}}` is for nodes whose output is nested under `result` — a JS `file()` return is top-level `file.content`.
 
 `@CustomParams` stays valid for email body, recipient, Gmail connection, API keys — not for the file.
 

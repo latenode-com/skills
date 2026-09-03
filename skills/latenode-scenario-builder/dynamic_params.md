@@ -18,7 +18,7 @@ Never send only the newest value; the server needs the full cascade context.
 
 For selects, use the option key, not its human-readable label. Never invent an option.
 
-## Live-verified Google Sheets cascade
+## Google Sheets cascade
 
 Node:
 

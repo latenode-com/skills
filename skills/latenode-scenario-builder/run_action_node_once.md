@@ -51,7 +51,7 @@ Do **not** create a scenario only to run a single action once. Prefer `run_actio
 - Existing connections are tried first, **most recently updated first**. If none work, complete the authorization link, then call the tool again.
 - Required parameters are validated **before** the action runs.
 - The run is cancelled after **100 seconds**.
-- The helper scenario is **hidden** from the Scenarios list. Live QA returned execution IDs, but the run was not visible to the user in normal scenario History. Do not promise Statistics/History visibility until the platform behavior is clarified.
+- The helper scenario is **hidden** from the Scenarios list. Do not promise that the run appears in the user's normal scenario History or Statistics.
 
 ## Recommended flow
 

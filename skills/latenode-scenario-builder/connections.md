@@ -105,4 +105,4 @@ Use this tool only when `search_connections` found no usable existing connection
 }
 ```
 
-The tool returns a `url` when the client does not support elicitation. **Immediately post that URL in chat** as a clickable link and wait until the user confirms authorization is done. Do not only "open it" silently. Live QA confirmed this flow on an existing Google Sheets connection.
+The tool returns a `url` when the client does not support elicitation. **Immediately post that URL in chat** as a clickable link and wait until the user confirms authorization is done. Do not only "open it" silently.

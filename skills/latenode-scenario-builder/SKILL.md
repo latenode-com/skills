@@ -17,7 +17,7 @@ Choose the right mode before calling tools:
 
 # MCP Tools Reference
 
-Schemas below match the live MCP `tools/list` response verified on 2026-08-24. The live server exposes **14 tools**; the public documentation may lag behind. Use exact snake_case names.
+Schemas below match the live MCP `tools/list` response. The live server exposes **14 tools**; the public documentation may lag behind. Use exact snake_case names.
 
 ## Scenarios
 
@@ -48,7 +48,7 @@ Creates a new scenario with the given name, description, and nodes.
 
 `[Scenario Name](https://app.latenode.com/scenarios/<scenarioId>)`
 
-Example: [Demo 2026-09-03 full graph JS file Gmail](https://app.latenode.com/scenarios/6a9930c281ea6a85fb2d220e)
+Example: `[Weekly lead digest](https://app.latenode.com/scenarios/<scenarioId>)`
 
 Send this link **twice**:
 1. Right after a successful `create_scenario`.
@@ -271,7 +271,7 @@ Runs a single node **inside a scenario** and returns its output. Useful for test
 
 **Output:** `executionId`, `result`, `output` (truncated when `compactOutput` is true), optional `error`.
 
-The live schema does not accept a `nodes` argument. `overrideParameters` exists in the schema, but complex and scalar examples from the older public reference produced validation errors in live QA; use it only after confirming the current server-side structure.
+The live schema does not accept a `nodes` argument. `overrideParameters` exists in the schema, but confirm the current server-side structure before relying on it.
 
 ### `run_action_node_once`
 
@@ -291,7 +291,7 @@ Runs a single **action** with no scenario you built.
 
 **Output:** `executionId`, optional `result`, `output`, and `error`.
 
-Distinct from `run_node_once` (no `scenarioId`). Helper scenario is hidden from the Scenarios list. Cancelled after 100 seconds. Live QA confirmed executions return IDs, but the user did not see them in normal scenario History; do not promise History/Statistics visibility until the platform behavior is clarified.
+Distinct from `run_node_once` (no `scenarioId`). Helper scenario is hidden from the Scenarios list. Cancelled after 100 seconds. Do not promise that the run appears in the user's normal scenario History or Statistics.
 
 ### `get_execution`
 

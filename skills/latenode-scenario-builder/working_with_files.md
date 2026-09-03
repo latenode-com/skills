@@ -121,9 +121,9 @@ const imageBuffer = Buffer.from(webpContent, "latin1");
 ```
 
    - Or, when the accessor is a **temp path**: `const contentFilePath = data["{{2.result.file.content}}"];` then `fs.readFileSync(contentFilePath)`, then write + `file()`.
-   - Live-verified equivalent: `data["{{3.`result`.`fileInfo`.`content`}}"]`.
+   - Equivalent numbered form: `data["{{3.`result`.`fileInfo`.`content`}}"]`.
    - Typical other nodes: `data["{{$3.body.file.content}}"]`.
-   - After a JS node `return { file: file("name.csv") }`, the next JS reads `data["{{$2.file.content}}"]` (no `result` wrapper). Live chain: `Final test - JS file chain`.
+   - After a JS node `return { file: file("name.csv") }`, the next JS reads `data["{{$2.file.content}}"]` (no `result` wrapper).
 `@CustomParams` is fine for text, recipient, Gmail connection — **never** for a file. Do **not** put `{{$3.result.fileInfo.content}}` (or any `...file...content` path) in `parameters` next to `code`. That is a CustomParams *value* and it breaks. The file exists only as `data["{{3.`result`.`fileInfo`.`content`}}"]` inside the source.
 
 #### Files in AI Agent tool nodes (IMPORTANT)
@@ -198,7 +198,7 @@ Two ways to consume `data["{{...content}}"]` after the hardcoded lookup:
 | Binary string (e.g. Image Generation `fileInfo.content`) | `Buffer.from(value, "latin1")` |
 | Temporary filesystem path (this CSV / Handling Files example) | `fs.readFileSync(contentFilePath)` |
 
-Live-verified Gmail send from JS (Image Generation file + connection custom param, **no file custom param**):
+Gmail send from JS (Image Generation file + connection custom param, **no file custom param**):
 
 ```javascript
 import fs from "fs";
@@ -258,12 +258,12 @@ export default async function run({ data }) {
   }
   const imageBuffer = Buffer.from(webpContent, "latin1");
 
-  const boundary = "latenode_final_test_boundary";
+  const boundary = "latenode_mime_boundary";
   const imageB64 = wrapBase64(imageBuffer.toString("base64"));
 
   const mime = [
     `To: ${recipient}`,
-    `Subject: Latenode Final test (JS + HTTP)`,
+    `Subject: Latenode file attachment`,
     "MIME-Version: 1.0",
     `Content-Type: multipart/mixed; boundary="${boundary}"`,
     "",
