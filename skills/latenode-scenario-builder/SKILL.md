@@ -73,7 +73,7 @@ Do not paste a bare URL as the only form. Do not use generic labels like "open s
 7. Call `create_scenario`. On success you get `scenarioId`. **In the same chat turn**, send `[<name>](https://app.latenode.com/scenarios/<scenarioId>)` (name is the link text). Send the same hyperlink again when configuration is fully done.
 8. Test with `run_scenario_once`. For webhook triggers use `async: true`, then HTTP-request the webhook URL.
 9. If `result` is not `success`, follow **Testing, debugging and troubleshooting**.
-10. When the graph is done, add **one overview sticker** on this same scenario (last `create_scenario` if you already know the full graph, otherwise last `update_scenario`). Read **[Stickers](stickers.md)** for the text blocks. Do not create another scenario for the note. Do not rewrite the rest of the graph.
+10. When the graph is done, add **one overview sticker** on this same scenario (last `create_scenario` if you already know the full graph, otherwise last `update_scenario`). Read **[Stickers](stickers.md)** for the text blocks. Do not rewrite the rest of the graph.
 
 **Example**
 

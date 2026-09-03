@@ -1,6 +1,6 @@
 ---
 name: stickers
-description: One overview canvas note (typeAlias sticker). Title, short what-it-does, MCP callout, how it works, optional red notes. Not graph logic. Do not create a second scenario for stickers.
+description: One overview canvas note (typeAlias sticker). Title, short what-it-does, MCP callout, how it works, optional red notes. Not graph logic.
 ---
 
 # Stickers
@@ -9,7 +9,7 @@ One **overview note** on the canvas. It helps the user see what the scenario is.
 
 `typeAlias`: `sticker`. `search_node_types` does not list it — use it anyway.
 
-Add it on the **last** `create_scenario` / `update_scenario` of this scenario — when the graph is already what the user will keep. One write: existing nodes unchanged + this sticker object (or edit `content` if the sticker is already there). Do not open a second scenario. Do not rewrite JS, templates, or connections because of the note.
+Add it on the **last** `create_scenario` / `update_scenario` of this scenario — when the graph is already what the user will keep. One write: existing nodes unchanged + this sticker object (or edit `content` if the sticker is already there). Do not rewrite JS, templates, or connections because of the note.
 
 The editor always drops the sticker **under** the graph, whether it was in the first create or a later update. That is fine. Do not try to put it on the left.
 
